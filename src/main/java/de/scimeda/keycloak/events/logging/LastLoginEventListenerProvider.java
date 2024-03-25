@@ -31,7 +31,7 @@ public class LastLoginEventListenerProvider implements EventListenerProvider {
     @Override
     public void onEvent(Event event) {
         // log.infof("## NEW %s EVENT", event.getType());
-        if (EventType.LOGIN.equals(event.getType())) {
+        if (EventType.LOGIN.equals(event.getType()) || EventType.REFRESH_TOKEN.equals(event.getType())) {
             RealmModel realm = this.model.getRealm(event.getRealmId());
             UserModel user = this.session.users().getUserById(realm, event.getUserId());
 
